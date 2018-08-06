@@ -1,6 +1,10 @@
 {
   "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
   "rules": {
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "max-len": 0
   }
 }
