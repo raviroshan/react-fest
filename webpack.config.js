@@ -19,7 +19,7 @@ module.exports = function webpackConfig(env) {
           loader: 'eslint-loader'
         },
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           loader: 'babel-loader'
         },
