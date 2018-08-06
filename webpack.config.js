@@ -40,6 +40,22 @@ module.exports = function webpackConfig(env) {
             // resolve-url-loader may be chained before sass-loader if necessary
             use: ['css-loader', 'sass-loader']
           })
+        },
+        // CSS File [Not using SASS Loader]
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
+        },
+        {
+          test: /\.(svg|eot|woff|woff2|ttf)$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/fonts/'
+          }
         }
       ]
     },
