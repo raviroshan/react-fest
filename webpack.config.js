@@ -59,7 +59,6 @@ module.exports = function webpackConfig(env) {
         }
       ]
     },
-
     plugins: [
       new ExtractTextPlugin('styles.css'),
       new HtmlWebpackPlugin({
@@ -68,6 +67,12 @@ module.exports = function webpackConfig(env) {
         template: 'src/index.template.html'
       })
     ],
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      alias: {
+        components: path.resolve(__dirname, 'src/react-app/components')
+      }
+    },
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,

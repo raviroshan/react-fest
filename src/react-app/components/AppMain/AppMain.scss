@@ -1,0 +1,14 @@
+.AppMain {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex-grow: 1;
+    padding: 2em 0;
+  }
+
+  i {
+    padding-left: 0.5em;
+  }
+}

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './dependencies';
 
-import Main from './Main/Main.jsx';
+import AppMain from 'components/AppMain/AppMain';
 
 const el = document.getElementById('app-root');
-ReactDOM.render(<Main userName="Ravi" />, el);
+ReactDOM.render(<AppMain userName="Ravi" />, el);
