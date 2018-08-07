@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
+import Tile from '../Tile/Tile';
 import './AppMain.scss';
 
 const AppMain = () => {
@@ -10,6 +11,7 @@ const AppMain = () => {
       <div className="row">
         <h2>{welcomeMessage}</h2>
       </div>
+      <Tile Title="React" Description="A JS Library from facebook"/>
     </div>
   );
 };
