@@ -6,4 +6,4 @@ import './dependencies';
 import AppMain from 'components/AppMain/AppMain';
 
 const el = document.getElementById('app-root');
-ReactDOM.render(<AppMain userName="Ravi" />, el);
+ReactDOM.render(<AppMain />, el);
