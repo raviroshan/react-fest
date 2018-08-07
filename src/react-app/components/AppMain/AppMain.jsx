@@ -5,9 +5,9 @@ const AppMain = () => {
   const welcomeMessage = 'Welcome to React fest';
   return (
     <div className="container">
-      <main>
+      <div className="row">
         <h2>{welcomeMessage}</h2>
-      </main>
+      </div>
     </div>
   );
 };
