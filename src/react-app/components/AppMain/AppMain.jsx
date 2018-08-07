@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 // Components
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
+import SearchPage from 'components/SearchPage/SearchPage';
 
 // Actions
 
@@ -19,15 +20,10 @@ class AppMain extends Component {
         <Header />
 
         <main className="container">
-          <h2>Main Component</h2>
+          <p>Main Component</p>
           <p>Welcome, {userName}</p>
 
-          <div>
-            <button type="button" className="btn btn-outline-dark">
-              <span>Dark</span>
-              <i className="fas fa-star" />
-            </button>
-          </div>
+          <SearchPage />
         </main>
 
         <Footer />
