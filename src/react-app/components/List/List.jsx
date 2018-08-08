@@ -29,7 +29,7 @@ class List extends Component {
       <div className="productListContainer">
           <div className="col-md-12 col-lg-12">
             {productList.map((item, index) => {
-              return <Tile {...item} notifyFavourite={this.notifyFavourite} Fkey = {index}/>
+              return <Tile {...item} notifyFavourite={this.notifyFavourite} key = {index}/>
             })}
           </div>
       </div>
