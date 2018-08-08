@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Tile.scss';
+import { Link } from 'react-router-dom';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 class Tile extends Component {
 
 	constructor(props) {
+    console.log('In constructor');
     super(props);
     this.state = ({
       isAddedToCart: false
     });
    // this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidMount() {
+    console.log('In component Did Mount');
+  }
+
+  componentWillUnmount() {
+    console.log('In component Will Unmount')
+  }
   
-  handleClick(e) {
+  handleClick = (e) => {
     this.setState((prevState) => ({
 			isAddedToCart: !prevState.isAddedToCart
 		}));
   }
 
 	render() {
+    console.log('In render Method');
 		const { Title, Description } = this.props;
 		return (
 			<div className="Tile">
@@ -38,6 +50,7 @@ class Tile extends Component {
 						</button>
 					</div>
 				</div>
+				<Link to="/PageNotFound">Click Here</Link>
 			</div>
 		)
 	}
