@@ -9,7 +9,7 @@ class Tile extends Component {
     this.state = ({
       isAddedToCart: false
     });
-   // this.handleClick = this.handleClick.bind(this);
+   this.handleClick = this.handleClick.bind(this);
   }
   
   handleClick(e) {
@@ -21,24 +21,24 @@ class Tile extends Component {
 	render() {
 		const { Title, Description } = this.props;
 		return (
-			<div className="Tile">
-				<div className="card">
-					<img
-						className="card-img-top"
-						src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png"
-						alt="Product Tile"
-					/>
-					<div className="card-body">
-						<h5 className="card-title">{Title}</h5>
-						<p className="card-text">{Description}</p>
+			  <div className="col-4 Tile">
+        <div className="card">
+          <img
+            className="card-img-top"
+            src="https://cdn.shopify.com/s/files/1/0128/9452/products/TSM-Red-Line-Grey-Black_1024x1024.png?v=1524684645"
+            alt="Product Tile"
+          />
+          <div className="card-body">
+            <h5 className="card-title">Title</h5>
+            <p className="card-text">Description</p>
 
-            <button type="button" className="btn btn-outline-dark" onClick={(e) => this.handleClick(e)}>
-							<span>Add To Bag</span>
-							<i className={this.state.isAddedToCart ? 'fas fa-star' : ''} />
-						</button>
-					</div>
-				</div>
-			</div>
+            <button type="button" className="btn btn-outline-dark" onClick={this.handleClick}>
+              <span>Add To Favorite</span>
+              <i className={this.state.isAddedToCart ? 'fas fa-star' : ''} />
+            </button>
+          </div>
+        </div>
+      </div>
 		)
 	}
 }
