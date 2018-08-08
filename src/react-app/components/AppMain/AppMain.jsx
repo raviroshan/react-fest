@@ -7,6 +7,7 @@ const AppMain = () => {
   return (
     <div className="container">
       <Header />
+      <Footer />
     </div>
   );
 };
