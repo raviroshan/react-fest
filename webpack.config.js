@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function webpackConfig(env) {
-  console.log('env: ', env);
   return {
     entry: './src/react-app/index.js',
     output: {

@@ -7,9 +7,6 @@ const AppMain = () => {
   return (
     <div className="container">
       <Header />
-      <div className="row">
-        <h2>{welcomeMessage}</h2>
-      </div>
     </div>
   );
 };
