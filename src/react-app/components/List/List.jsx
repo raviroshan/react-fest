@@ -25,12 +25,14 @@ class List extends Component {
 
   render() {
     return (
+      <div className="container">
       <div className="productListContainer">
           <div className="col-md-12 col-lg-12">
             {productList.map((item, index) => {
               return <Tile {...item} notifyFavourite={this.notifyFavourite} Fkey = {index}/>
             })}
           </div>
+      </div>
         <Link to="/PageNotFound">Clicke Here to Move out of the page</Link>
       </div>
     )
