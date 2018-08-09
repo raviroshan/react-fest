@@ -17,6 +17,10 @@ class Tile extends Component {
 		}));
   }
 
+	shouldComponentUpdate() {
+		 return true;
+	}
+
 	render() {
     console.log('In render Method');
 		const { Title, Description, ImageSource } = this.props;
