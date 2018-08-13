@@ -14,15 +14,11 @@ import './AppMain.scss';
 
 class AppMain extends Component {
   render() {
-    const { userName } = this.props;
     return (
       <div className="AppMain">
         <Header />
 
         <main className="container">
-          <p>Main Component</p>
-          <p>Welcome, {userName}</p>
-
           <SearchPage />
         </main>
 

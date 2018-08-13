@@ -11,29 +11,81 @@ import ProductTile from 'components/ProductTile/ProductTile';
 import './SearchPage.scss';
 
 class SearchPage extends Component {
+  state = {
+    favCount: 0,
+    productList: [
+      {
+        productName: 'Pizza',
+        productId: 'pizza',
+        basePrice: 400
+      },
+      {
+        productName: 'Choco Lava',
+        productId: 'chocolava',
+        basePrice: 200
+      },
+      {
+        productName: 'Garlic Bread',
+        productId: 'garlic_bread',
+        basePrice: 100
+      },
+      {
+        productName: 'Sprite',
+        productId: 'sprite',
+        basePrice: 50
+      },
+      {
+        productName: 'Biryani',
+        productId: 'biryani',
+        basePrice: 250
+      },
+      {
+        productName: 'Samosa',
+        productId: 'samosa',
+        basePrice: 30
+      },
+      {
+        productName: 'Gulab Jamun',
+        productId: 'gulab_jamun',
+        basePrice: 70
+      },
+      {
+        productName: 'Gajar ka Halwa',
+        productId: 'gajar_halwa',
+        basePrice: 180
+      }
+    ]
+  };
+
+  handleNotify = param => {
+    let { favCount: newCount } = this.state;
+
+    if (param === 'increment') {
+      newCount++;
+    } else {
+      newCount--;
+    }
+
+    this.setState({
+      favCount: newCount
+    });
+  };
+
   render() {
-    const { propName } = this.props;
-    console.log('propName: ', propName);
+    const { productList, favCount } = this.state;
     return (
       <div className="SearchPage">
-        <h2 className="text-center">Search Page</h2>
+        <h2 className="text-center">
+          <span className="title">Favorite Count : </span>
+          <span className="fav-count badge badge-primary">{favCount}</span>
+        </h2>
 
         <div className="row justify-content-center">
-          <div className="col-12 col-lg-3">
-            <ProductTile />
-          </div>
-          <div className="col-12 col-lg-3">
-            <ProductTile />
-          </div>
-          <div className="col-12 col-lg-3">
-            <ProductTile />
-          </div>
-          <div className="col-12 col-lg-3">
-            <ProductTile />
-          </div>
-          <div className="col-12 col-lg-3">
-            <ProductTile />
-          </div>
+          {productList.map(product => (
+            <div className="col-12 col-md-3">
+              <ProductTile {...product} handleNotify={this.handleNotify} />
+            </div>
+          ))}
         </div>
       </div>
     );

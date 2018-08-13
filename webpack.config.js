@@ -1,10 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = function webpackConfig(env) {
-  console.log('env: ', env);
+module.exports = function webpackConfig() {
   return {
+    devtool: 'source-map',
     entry: './src/react-app/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -65,7 +66,8 @@ module.exports = function webpackConfig(env) {
         // Also generate a test.html
         filename: 'index.html',
         template: 'src/index.template.html'
-      })
+      }),
+      new CopyWebpackPlugin([{ from: 'src/assets/images', to: 'assets/images' }])
     ],
     resolve: {
       extensions: ['.js', '.jsx'],

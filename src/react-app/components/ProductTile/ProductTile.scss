@@ -1,7 +1,30 @@
 .ProductTile {
   padding: 2em 0;
 
+  &:hover {
+    .card-img-top {
+      transform: scale(1.2) rotate(5deg);
+      transition: all 1.5s ease-in;
+    }
+  }
+
   .card {
+    padding: 1px;
+
+    &:hover {
+      border: 1px solid black;
+    }
+
     text-align: center;
+
+    .img-wrapper {
+      height: 200px;
+      overflow: hidden;
+
+      .card-img-top {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

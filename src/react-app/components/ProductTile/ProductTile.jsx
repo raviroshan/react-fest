@@ -11,24 +11,56 @@ import React, { Component } from 'react';
 import './ProductTile.scss';
 
 class ProductTile extends Component {
+  state = {
+    isFav: false
+  };
+
+  handleClick = () => {
+    const { isFav: oldFavValue } = this.state;
+    this.setState(
+      {
+        isFav: !oldFavValue
+      },
+      () => {
+        const { isFav: newFavValue } = this.state;
+        this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
+      }
+    );
+  };
+
   render() {
-    const { propName } = this.props;
-    console.log('propName: ', propName);
+    const { productName, productId, basePrice } = this.props;
+    const { isFav } = this.state;
+
+    const btnText = isFav ? 'Item Added' : 'Add to Bag';
+    const btnClass = isFav ? 'btn-success' : 'btn-outline-dark';
+    const iconClass = isFav ? 'fa-check-circle' : 'fa-plus-circle';
+
     return (
       <div className="ProductTile">
         <div className="card">
-          <img
-            className="card-img-top"
-            src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png"
-            alt="Product Tile"
-          />
+          <div className="img-wrapper">
+            <img
+              className="card-img-top"
+              src={`/assets/images/products/${productId}.jpg`}
+              alt="Product Tile"
+            />
+          </div>
           <div className="card-body">
-            <h5 className="card-title">Product Title</h5>
-            <p className="card-text">some random desctiption</p>
+            <h5 className="card-title">{productName}</h5>
+            <p className="card-text base">
+              <span>base price : </span>
+              <span>${basePrice} </span>
+            </p>
 
-            <button type="button" className="btn btn-outline-dark">
-              <span>Add To Bag</span>
-              <i className="fas fa-star" />
+            <p className="card-text vat">
+              <span>including vat : </span>
+              <span>${basePrice + basePrice * 0.18} </span>
+            </p>
+
+            <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>
+              <span>{btnText}</span>
+              <i className={`fas ${iconClass}`} />
             </button>
           </div>
         </div>

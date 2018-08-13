@@ -3,11 +3,14 @@
   "env": {
     "browser": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "comma-dangle": 0,
     "max-len": 0,
+    "arrow-parens": 0,
     "import/no-unresolved": 0,
     "import/extensions": 0,
+    "no-plusplus": 0,
 
     // React Rules
     "react/prefer-stateless-function": 0,
@@ -16,6 +19,8 @@
     "react/forbid-prop-types": 0,
     "react/prop-types": 0,
     "react/no-unused-prop-types": 0,
+    "react/no-access-state-in-setstate": 0,
+    "react/destructuring-assignment": 0,
 
     "jsx-a11y/anchor-is-valid": 0
   }
