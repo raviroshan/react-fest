@@ -4,12 +4,17 @@ import React, { Component } from 'react';
 
 // Components
 import ProductTile from 'components/ProductTile/ProductTile';
-import TaxCalculator from 'components/TaxCalculator/TaxCalculator';
+// import TaxCalculator from 'components/TaxCalculator/TaxCalculator';
+import enhancerHoF from 'components/enhancerHoF/enhancerHoF';
 
 // Actions
 
 // Styles
 import './SearchPage.scss';
+
+const EnhancedComponent = enhancerHoF(ProductTile, {
+  isSecured: true
+});
 
 class SearchPage extends Component {
   state = {
@@ -84,9 +89,7 @@ class SearchPage extends Component {
         <div className="row justify-content-center">
           {productList.map(product => (
             <div className="col-12 col-md-3">
-              <TaxCalculator {...product} handleNotify={this.handleNotify}>
-                <ProductTile discount="10%" />
-              </TaxCalculator>
+              <EnhancedComponent {...product} handleNotify={this.handleNotify} />
             </div>
           ))}
         </div>
