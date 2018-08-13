@@ -1,6 +1,6 @@
 // Packages
 import React, { Component } from 'react';
-// import getValue from 'object-getvalue';
+import { connect } from 'react-redux';
 
 // Components
 import Header from 'components/Header/Header';
@@ -14,6 +14,7 @@ import './AppMain.scss';
 
 class AppMain extends Component {
   render() {
+    console.log('>>>> this.props : ', this.props);
     return (
       <div className="AppMain">
         <Header />
@@ -28,4 +29,8 @@ class AppMain extends Component {
   }
 }
 
-export default AppMain;
+const mapStateToProps = state => {
+  console.log('state: ', state);
+  return state;
+};
+export default connect(mapStateToProps)(AppMain);
