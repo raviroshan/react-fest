@@ -1,6 +1,5 @@
 // Packages
 import React, { Component } from 'react';
-
 // import getValue from 'object-getvalue';
 
 // Components
@@ -23,7 +22,11 @@ class ProductTile extends Component {
       },
       () => {
         const { isFav: newFavValue } = this.state;
-        this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
+        // this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
+        const actionType = newFavValue ? 'increment' : 'decrement';
+        this.props.dispatch({
+          type: actionType
+        });
       }
     );
   };

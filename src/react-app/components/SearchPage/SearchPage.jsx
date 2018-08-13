@@ -12,68 +12,12 @@ import TaxCalculator from 'components/TaxCalculator/TaxCalculator';
 import './SearchPage.scss';
 
 class SearchPage extends Component {
-  state = {
-    favCount: 0,
-    productList: [
-      {
-        productName: 'Pizza',
-        productId: 'pizza',
-        basePrice: 400
-      },
-      {
-        productName: 'Choco Lava',
-        productId: 'chocolava',
-        basePrice: 200
-      },
-      {
-        productName: 'Garlic Bread',
-        productId: 'garlic_bread',
-        basePrice: 100
-      },
-      {
-        productName: 'Sprite',
-        productId: 'sprite',
-        basePrice: 50
-      },
-      {
-        productName: 'Biryani',
-        productId: 'biryani',
-        basePrice: 250
-      },
-      {
-        productName: 'Samosa',
-        productId: 'samosa',
-        basePrice: 30
-      },
-      {
-        productName: 'Gulab Jamun',
-        productId: 'gulab_jamun',
-        basePrice: 70
-      },
-      {
-        productName: 'Gajar ka Halwa',
-        productId: 'gajar_halwa',
-        basePrice: 180
-      }
-    ]
-  };
-
-  handleNotify = param => {
-    let { favCount: newCount } = this.state;
-
-    if (param === 'increment') {
-      newCount++;
-    } else {
-      newCount--;
-    }
-
-    this.setState({
-      favCount: newCount
-    });
-  };
-
   render() {
-    const { productList, favCount } = this.state;
+    const {
+      search: { productList },
+      favProducts: { count: favCount },
+      dispatch
+    } = this.props;
     return (
       <div className="SearchPage">
         <h2 className="text-center">
@@ -85,7 +29,7 @@ class SearchPage extends Component {
           {productList.map(product => (
             <div className="col-12 col-md-3">
               <TaxCalculator {...product} handleNotify={this.handleNotify}>
-                <ProductTile discount="10%" />
+                <ProductTile discount="10%" dispatch={dispatch} />
               </TaxCalculator>
             </div>
           ))}

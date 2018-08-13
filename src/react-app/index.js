@@ -5,15 +5,17 @@ import './dependencies';
 
 import AppMain from 'components/AppMain/AppMain';
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger';
 
-import prouductListReducer from './reducers/prouductListReducer';
+import searchReducer from './reducers/searchReducer';
 import favProductsReducer from './reducers/favProductsReducer';
 
 // const store = createStore(prouductListReducer);
 const store = createStore(
-  combineReducers({ productList: prouductListReducer, favProducts: favProductsReducer })
+  combineReducers({ search: searchReducer, favProducts: favProductsReducer }),
+  applyMiddleware(logger)
 );
 
 console.log('store: ', store);

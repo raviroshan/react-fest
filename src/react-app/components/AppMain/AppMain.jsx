@@ -20,7 +20,7 @@ class AppMain extends Component {
         <Header />
 
         <main className="container">
-          <SearchPage />
+          <SearchPage {...this.props} />
         </main>
 
         <Footer />
