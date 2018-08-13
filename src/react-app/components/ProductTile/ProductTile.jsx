@@ -30,6 +30,7 @@ class ProductTile extends Component {
 
   render() {
     const { productName, productId, basePrice, priceWithTax } = this.props;
+    console.log('this.props: ', this.props);
     const { isFav } = this.state;
 
     const btnText = isFav ? 'Item Added' : 'Add to Bag';

@@ -84,11 +84,9 @@ class SearchPage extends Component {
         <div className="row justify-content-center">
           {productList.map(product => (
             <div className="col-12 col-md-3">
-              <TaxCalculator
-                {...product}
-                handleNotify={this.handleNotify}
-                TargetComponent={ProductTile}
-              />
+              <TaxCalculator {...product} handleNotify={this.handleNotify}>
+                <ProductTile discount="10%" />
+              </TaxCalculator>
             </div>
           ))}
         </div>
