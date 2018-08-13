@@ -29,7 +29,7 @@ class ProductTile extends Component {
   };
 
   render() {
-    const { productName, productId, basePrice } = this.props;
+    const { productName, productId, basePrice, priceWithTax } = this.props;
     const { isFav } = this.state;
 
     const btnText = isFav ? 'Item Added' : 'Add to Bag';
@@ -55,7 +55,7 @@ class ProductTile extends Component {
 
             <p className="card-text vat">
               <span>including vat : </span>
-              <span>${basePrice + basePrice * 0.18} </span>
+              <span>${priceWithTax} </span>
             </p>
 
             <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>

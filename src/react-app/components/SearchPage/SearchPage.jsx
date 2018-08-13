@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 // Components
 import ProductTile from 'components/ProductTile/ProductTile';
+import TaxCalculator from 'components/TaxCalculator/TaxCalculator';
 
 // Actions
 
@@ -83,7 +84,11 @@ class SearchPage extends Component {
         <div className="row justify-content-center">
           {productList.map(product => (
             <div className="col-12 col-md-3">
-              <ProductTile {...product} handleNotify={this.handleNotify} />
+              <TaxCalculator
+                {...product}
+                handleNotify={this.handleNotify}
+                TargetComponent={ProductTile}
+              />
             </div>
           ))}
         </div>
