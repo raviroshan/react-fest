@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 // import getValue from 'object-getvalue';
 
+import { connect } from 'react-redux';
+
 // Components
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -14,12 +16,13 @@ import './AppMain.scss';
 
 class AppMain extends Component {
   render() {
+    console.log('AppMain - props : ', this.props);
     return (
       <div className="AppMain">
         <Header />
 
         <main className="container">
-          <SearchPage />
+          <SearchPage {...this.props} />
         </main>
 
         <Footer />
@@ -28,4 +31,10 @@ class AppMain extends Component {
   }
 }
 
-export default AppMain;
+const mapStateToProps = store => {
+  console.log('store: ', store);
+  return store;
+};
+
+export default connect(mapStateToProps)(AppMain);
+// export default AppMain;

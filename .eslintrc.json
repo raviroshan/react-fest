@@ -11,6 +11,8 @@
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "no-plusplus": 0,
+    "object-curly-newline": 0,
+    "no-unused-vars": 0,
 
     // React Rules
     "react/prefer-stateless-function": 0,

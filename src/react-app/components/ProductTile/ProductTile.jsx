@@ -10,6 +10,13 @@ import React, { Component } from 'react';
 // Styles
 import './ProductTile.scss';
 
+const someActionCreator = actionType => {
+  console.log('actionType: ', actionType);
+  return {
+    type: actionType
+  };
+};
+
 class ProductTile extends Component {
   state = {
     isFav: false
@@ -23,13 +30,16 @@ class ProductTile extends Component {
       },
       () => {
         const { isFav: newFavValue } = this.state;
-        this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
+        // this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
+        const actionType = newFavValue ? 'increment' : 'decrement';
+
+        this.props.dispatch(someActionCreator(actionType));
       }
     );
   };
 
   render() {
-    const { productName, productId, basePrice } = this.props;
+    const { dispatch, productName, productId, basePrice, priceWithTax } = this.props;
     const { isFav } = this.state;
 
     const btnText = isFav ? 'Item Added' : 'Add to Bag';
@@ -55,7 +65,7 @@ class ProductTile extends Component {
 
             <p className="card-text vat">
               <span>including vat : </span>
-              <span>${basePrice + basePrice * 0.18} </span>
+              <span>$ {basePrice + basePrice * 0.18} </span>
             </p>
 
             <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>
