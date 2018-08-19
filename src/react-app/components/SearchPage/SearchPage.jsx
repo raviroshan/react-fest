@@ -6,11 +6,17 @@ import React, { Component } from 'react';
 import ProductTile from 'components/ProductTile/ProductTile';
 
 // Actions
+import { getProductListLocal, getProductListFromServer } from '../../actions/search-actions';
 
 // Styles
 import './SearchPage.scss';
 
 class SearchPage extends Component {
+  componentDidMount() {
+    // this.props.dispatch(getProductListLocal());
+    this.props.dispatch(getProductListFromServer());
+  }
+
   render() {
     const {
       dispatch,
@@ -25,8 +31,10 @@ class SearchPage extends Component {
         </h2>
 
         <div className="row justify-content-center">
+          {productList.length === 0 && <p>Loading....</p>}
+
           {productList.map(product => (
-            <div className="col-12 col-md-3">
+            <div className="col-12 col-md-3" key={product.productId}>
               <ProductTile {...product} dispatch={dispatch} />
             </div>
           ))}
