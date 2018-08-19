@@ -4,37 +4,29 @@ import React, { Component } from 'react';
 
 // Components
 import ProductTile from 'components/ProductTile/ProductTile';
-// import TaxCalculator2 from 'components/TaxCalculator/TaxCalculator2';
-import TaxCalculatorHoF from 'components/TaxCalculator/TaxCalculatorHoF';
 
 // Actions
 
 // Styles
 import './SearchPage.scss';
 
-const Foo = TaxCalculatorHoF(ProductTile, {
-  isLoggedIn: false
-});
-console.log('Foo: ', Foo);
-
 class SearchPage extends Component {
   render() {
     const {
       dispatch,
-      cartPageReducer: { productList },
-      searchPageReducer: { count: favCount }
+      cartPageReducer: { cartItemCount },
+      searchPageReducer: { productList }
     } = this.props;
     return (
       <div className="SearchPage">
         <h2 className="text-center">
-          <span className="title">Favorite Count : </span>
-          <span className="fav-count badge badge-primary">{favCount}</span>
+          <span className="title">Cart Count : </span>
+          <span className="fav-count badge badge-primary">{cartItemCount}</span>
         </h2>
 
         <div className="row justify-content-center">
           {productList.map(product => (
             <div className="col-12 col-md-3">
-              {/* <ProductTile {...product} handleNotify={this.handleNotify} /> */}
               <ProductTile {...product} dispatch={dispatch} />
             </div>
           ))}

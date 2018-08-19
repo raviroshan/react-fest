@@ -31,7 +31,7 @@ class ProductTile extends Component {
       () => {
         const { isFav: newFavValue } = this.state;
         // this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
-        const actionType = newFavValue ? 'increment' : 'decrement';
+        const actionType = newFavValue ? 'ITEM_ADDED' : 'ITEM_REMOVED';
 
         this.props.dispatch(someActionCreator(actionType));
       }

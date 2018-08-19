@@ -17,8 +17,6 @@ const store = createStore(
   combineReducers({ searchPageReducer, cartPageReducer }),
   applyMiddleware(logger)
 );
-console.log('store: ', store);
-console.log('store getState : ', store.getState());
 
 const el = document.getElementById('app-root');
 ReactDOM.render(
