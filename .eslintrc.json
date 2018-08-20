@@ -13,6 +13,9 @@
     "no-plusplus": 0,
     "object-curly-newline": 0,
     "no-unused-vars": 0,
+    "space-before-function-paren": 0,
+    "import/prefer-default-export": 0,
+    "import/named": 0,
 
     // React Rules
     "react/prefer-stateless-function": 0,

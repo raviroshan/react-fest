@@ -28,7 +28,14 @@ class AppMain extends Component {
   }
 }
 
-const mapStateToProps = store => store;
+// const mapStateToProps = store => store;
 
-export default connect(mapStateToProps)(AppMain);
+// export default connect(mapStateToProps)(AppMain);
+
+const someFn = store => {
+  console.log('store: ', store);
+  return { ...store, someExtraProps: 'Deloitte' };
+};
+
+export default connect(someFn)(AppMain);
 // export default AppMain;
