@@ -1,21 +1,11 @@
 // Packages
 import React, { Component } from 'react';
 
-// import getValue from 'object-getvalue';
-
-// Components
-
-// Actions
-
+import { getFormattedValue } from '../../utils';
 // Styles
 import './ProductTile.scss';
 
-const someActionCreator = actionType => {
-  console.log('actionType: ', actionType);
-  return {
-    type: actionType
-  };
-};
+const someActionCreator = actionType => ({ type: actionType });
 
 class ProductTile extends Component {
   state = {
@@ -30,13 +20,17 @@ class ProductTile extends Component {
       },
       () => {
         const { isFav: newFavValue } = this.state;
-        // this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
         const actionType = newFavValue ? 'increment' : 'decrement';
 
         this.props.dispatch(someActionCreator(actionType));
       }
     );
   };
+
+  convertUnicode = (input) => input.replace(/\\u(\w{4,4})/g, (a, b) => {
+    const charcode = parseInt(b, 16);
+    return String.fromCharCode(charcode);
+  })
 
   render() {
     const { dispatch, productName, productId, basePrice, priceWithTax } = this.props;
@@ -45,7 +39,7 @@ class ProductTile extends Component {
     const btnText = isFav ? 'Item Added' : 'Add to Bag';
     const btnClass = isFav ? 'btn-success' : 'btn-outline-dark';
     const iconClass = isFav ? 'fa-check-circle' : 'fa-plus-circle';
-
+    const rupee = this.convertUnicode('\u20B9');
     return (
       <div className="ProductTile">
         <div className="card">
@@ -60,12 +54,12 @@ class ProductTile extends Component {
             <h5 className="card-title">{productName}</h5>
             <p className="card-text base">
               <span>base price : </span>
-              <span>${basePrice} </span>
+              <span>{rupee} {getFormattedValue(`${basePrice}`)} </span>
             </p>
 
             <p className="card-text vat">
               <span>including vat : </span>
-              <span>$ {basePrice + basePrice * 0.18} </span>
+              <span>{rupee} {basePrice + basePrice * 0.18} </span>
             </p>
 
             <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`automatic snapshot 1`] = `
+Array [
+  Object {
+    "Price": 100,
+    "category": Array [
+      "food",
+    ],
+    "name": "product1",
+  },
+  Object {
+    "Price": 700,
+    "category": Array [
+      "food",
+    ],
+    "name": "product7",
+  },
+]
+`;
+
+exports[`automatic snapshot: react element 1`] = `
+<div
+  onClick={[Function]}
+>
+  Hello World
+</div>
+`;
+
+exports[`automatic snapshot: react-dom 1`] = `
+<div>
+  <div>
+    Hello World
+  </div>
+</div>
+`;
+
+exports[`automatic snapshot: rendered 1`] = `
+<div
+  onClick={[Function]}
+>
+  Hello World
+</div>
+`;
+
+exports[`automatic snapshot: title of a snapshot! 1`] = `<div />`;

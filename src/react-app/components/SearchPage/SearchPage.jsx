@@ -1,21 +1,11 @@
 // Packages
 import React, { Component } from 'react';
-// import getValue from 'object-getvalue';
 
 // Components
-import ProductTile from 'components/ProductTile/ProductTile';
-// import TaxCalculator2 from 'components/TaxCalculator/TaxCalculator2';
-import TaxCalculatorHoF from 'components/TaxCalculator/TaxCalculatorHoF';
-
-// Actions
+import ProductTile from '../ProductTile/ProductTile';
 
 // Styles
 import './SearchPage.scss';
-
-const Foo = TaxCalculatorHoF(ProductTile, {
-  isLoggedIn: false
-});
-console.log('Foo: ', Foo);
 
 class SearchPage extends Component {
   render() {
@@ -34,7 +24,6 @@ class SearchPage extends Component {
         <div className="row justify-content-center">
           {productList.map(product => (
             <div className="col-12 col-md-3">
-              {/* <ProductTile {...product} handleNotify={this.handleNotify} /> */}
               <ProductTile {...product} dispatch={dispatch} />
             </div>
           ))}

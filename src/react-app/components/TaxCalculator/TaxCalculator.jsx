@@ -10,7 +10,6 @@ class TaxCalculator extends Component {
       priceWithTax = basePrice;
     }
 
-    console.log('priceWithTax: ', priceWithTax);
     return (
       <div className="TaxCalculator">
         <p>TaxCalculator Component </p>

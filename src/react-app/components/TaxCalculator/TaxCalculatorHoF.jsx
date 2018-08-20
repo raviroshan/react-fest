@@ -12,7 +12,6 @@ export default function TaxCalculatorHoF(ComponentName, params) {
         priceWithTax = basePrice;
       }
 
-      console.log('priceWithTax: ', priceWithTax);
       return (
         <div className="TaxCalculator2">
           <p>TaxCalculator Component </p>

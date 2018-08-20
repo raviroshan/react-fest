@@ -1,14 +1,14 @@
-const initialState = {
+export const initialState = {
   productList: [
     {
       productName: 'Pizza',
       productId: 'pizza',
-      basePrice: 450
+      basePrice: 45000
     },
     {
       productName: 'Choco Lava',
       productId: 'chocolava',
-      basePrice: 200
+      basePrice: 2000
     },
     {
       productName: 'Garlic Bread',
@@ -44,8 +44,6 @@ const initialState = {
 };
 
 export default function cartPageReducer(previousState = initialState, action) {
-  console.log('previousState: ', previousState);
-  console.log('action: ', action);
   // some logic
   return previousState;
 }

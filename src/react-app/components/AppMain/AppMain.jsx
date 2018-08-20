@@ -1,13 +1,12 @@
 // Packages
 import React, { Component } from 'react';
-// import getValue from 'object-getvalue';
 
 import { connect } from 'react-redux';
 
 // Components
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
-import SearchPage from 'components/SearchPage/SearchPage';
+import SearchPage from '../SearchPage/SearchPage';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 // Actions
 
@@ -15,11 +14,14 @@ import SearchPage from 'components/SearchPage/SearchPage';
 import './AppMain.scss';
 
 class AppMain extends Component {
+  searchedItem = (searchedItem) => {
+    console.log(searchedItem);
+  }
+
   render() {
-    console.log('AppMain - props : ', this.props);
     return (
       <div className="AppMain">
-        <Header />
+        <Header searchedItem={this.searchedItem} />
 
         <main className="container">
           <SearchPage {...this.props} />
@@ -31,10 +33,6 @@ class AppMain extends Component {
   }
 }
 
-const mapStateToProps = store => {
-  console.log('store: ', store);
-  return store;
-};
+const mapStateToProps = store => store;
 
 export default connect(mapStateToProps)(AppMain);
-// export default AppMain;

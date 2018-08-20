@@ -8,22 +8,23 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import './dependencies';
 
-import AppMain from 'components/AppMain/AppMain';
+// import AppMain from 'components/AppMain/AppMain';
+
+import App from './app';
 
 import searchPageReducer from './reducers/searchPageReducer';
 import cartPageReducer from './reducers/cartPageReducer';
 
 const store = createStore(
   combineReducers({ searchPageReducer, cartPageReducer }),
-  applyMiddleware(logger)
+  applyMiddleware(logger),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-console.log('store: ', store);
-console.log('store getState : ', store.getState());
 
 const el = document.getElementById('app-root');
 ReactDOM.render(
   <Provider store={store}>
-    <AppMain day="Friday" />
+    <App />
   </Provider>,
   el
 );

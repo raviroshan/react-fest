@@ -1,15 +1,21 @@
 // Packages
 import React, { Component } from 'react';
-// import getValue from 'object-getvalue';
 
+import { api } from '../../utils';
+// Styles
+import './Header.scss';
 // Components
 
 // Actions
-
-// Styles
-import './Header.scss';
-
 class Header extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    const { search } = e.target.elements;
+    api.findItem(search.value).then((data) => {
+      this.props.searchedItem(data);
+    });
+  }
+
   render() {
     return (
       <header className="Header">
@@ -34,8 +40,9 @@ class Header extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item dropdown" />
             </ul>
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0" onSubmit={this.handleSubmit}>
               <input
+                name="search"
                 className="form-control mr-sm-2"
                 type="search"
                 placeholder="Search"
