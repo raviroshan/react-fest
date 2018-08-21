@@ -1,6 +1,7 @@
 // Packages
 import React, { Component } from 'react';
 // import getValue from 'object-getvalue';
+import { connect } from 'react-redux';
 
 // Components
 import ProductTile from 'components/ProductTile/ProductTile';
@@ -23,6 +24,7 @@ class SearchPage extends Component {
       cartPageReducer: { cartItemCount },
       searchPageReducer: { productList }
     } = this.props;
+    console.log('this.props: ', this.props);
     return (
       <div className="SearchPage">
         <h2 className="text-center">
@@ -33,9 +35,9 @@ class SearchPage extends Component {
         <div className="row justify-content-center">
           {productList.length === 0 && <p>Loading....</p>}
 
-          {productList.map(product => (
-            <div className="col-12 col-md-3" key={product.productId}>
-              <ProductTile {...product} dispatch={dispatch} />
+          {productList.map(productDetails => (
+            <div className="col-12 col-md-3" key={productDetails.productId}>
+              <ProductTile productDetails={productDetails} dispatch={dispatch} />
             </div>
           ))}
         </div>
@@ -44,4 +46,7 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+const mapStateToProps = store => store;
+
+export default connect(mapStateToProps)(SearchPage);
+// export default SearchPage;

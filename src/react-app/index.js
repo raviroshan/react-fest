@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 
@@ -36,7 +37,9 @@ const store = createStore(
 const el = document.getElementById('app-root');
 ReactDOM.render(
   <Provider store={store}>
-    <AppMain day="Friday" />
+    <BrowserRouter>
+      <AppMain day="Friday" />
+    </BrowserRouter>
   </Provider>,
   el
 );

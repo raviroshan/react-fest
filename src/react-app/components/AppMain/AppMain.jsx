@@ -1,13 +1,13 @@
 // Packages
 import React, { Component } from 'react';
 // import getValue from 'object-getvalue';
-
-import { connect } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Components
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SearchPage from 'components/SearchPage/SearchPage';
+import CartPage from 'components/CartPage/CartPage';
 
 // Styles
 import './AppMain.scss';
@@ -19,7 +19,13 @@ class AppMain extends Component {
         <Header />
 
         <main className="container">
-          <SearchPage {...this.props} />
+          <Switch>
+            <Route path="/" exact component={SearchPage} />
+            <Route path="/search" exact component={SearchPage} />
+            <Route path="/cart" exact render={props => <CartPage {...props} />} />
+            <Redirect to="/" />
+          </Switch>
+          {/* <SearchPage {...this.props} /> */}
         </main>
 
         <Footer />
@@ -28,7 +34,4 @@ class AppMain extends Component {
   }
 }
 
-const mapStateToProps = store => store;
-
-export default connect(mapStateToProps)(AppMain);
-// export default AppMain;
+export default AppMain;

@@ -10,10 +10,11 @@ import React, { Component } from 'react';
 // Styles
 import './ProductTile.scss';
 
-const someActionCreator = actionType => {
+const someActionCreator = (actionType, productDetails) => {
   console.log('actionType: ', actionType);
   return {
-    type: actionType
+    type: actionType,
+    payload: productDetails
   };
 };
 
@@ -33,13 +34,17 @@ class ProductTile extends Component {
         // this.props.handleNotify(newFavValue ? 'increment' : 'decrement');
         const actionType = newFavValue ? 'ITEM_ADDED' : 'ITEM_REMOVED';
 
-        this.props.dispatch(someActionCreator(actionType));
+        this.props.dispatch(someActionCreator(actionType, this.props.productDetails));
       }
     );
   };
 
   render() {
-    const { dispatch, productName, productId, basePrice, priceWithTax } = this.props;
+    const {
+      dispatch,
+      productDetails: { productName, productId, basePrice, priceWithTax },
+      isCartItem
+    } = this.props;
     const { isFav } = this.state;
 
     const btnText = isFav ? 'Item Added' : 'Add to Bag';
@@ -68,10 +73,12 @@ class ProductTile extends Component {
               <span>$ {basePrice + basePrice * 0.18} </span>
             </p>
 
-            <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>
-              <span>{btnText}</span>
-              <i className={`fas ${iconClass}`} />
-            </button>
+            {!isCartItem && (
+              <button type="button" className={`btn ${btnClass}`} onClick={this.handleClick}>
+                <span>{btnText}</span>
+                <i className={`fas ${iconClass}`} />
+              </button>
+            )}
           </div>
         </div>
       </div>

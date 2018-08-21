@@ -1,5 +1,6 @@
 const initialState = {
-  cartItemCount: 0
+  cartItemCount: 0,
+  cartItemList: []
 };
 
 export default function cartPageReducer(previousState = initialState, action) {
@@ -7,7 +8,8 @@ export default function cartPageReducer(previousState = initialState, action) {
     case 'ITEM_ADDED':
       return {
         ...previousState,
-        cartItemCount: previousState.cartItemCount + 1
+        cartItemCount: previousState.cartItemCount + 1,
+        cartItemList: [...previousState.cartItemList, action.payload]
       };
 
     case 'ITEM_REMOVED':
