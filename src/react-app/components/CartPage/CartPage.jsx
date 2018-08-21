@@ -12,6 +12,15 @@ import ProductTile from 'components/ProductTile/ProductTile';
 import './CartPage.scss';
 
 class CartPage extends Component {
+  componentDidMount() {
+    setTimeout(() => {
+      import('./SomeRandomCode' /* webpackChunkName: "some-random" */).then(module => {
+        console.log('module: ', module);
+        module.default();
+      });
+    }, 2000);
+  }
+
   render() {
     console.log(' this.props: ', this.props);
     const {

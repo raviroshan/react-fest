@@ -2,14 +2,21 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
+const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function webpackConfig() {
   return {
     devtool: 'source-map',
-    entry: './src/react-app/index.js',
+    entry: {
+      vendor: ['react', 'react-dom', 'redux'],
+      appMain: './src/react-app/index.js'
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js'
+      filename: '[name].js',
+      chunkFilename: '[name]-lazy-chunk.js'
     },
     module: {
       rules: [
@@ -61,6 +68,15 @@ module.exports = function webpackConfig() {
       ]
     },
     plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        // filename: "vendor.js"
+        // (Give the chunk a different name)
+
+        minChunks: Infinity
+        // (with more entries, this ensures that no other module
+        //  goes into the vendor chunk)
+      }),
       new ExtractTextPlugin('styles.css'),
       new HtmlWebpackPlugin({
         // Also generate a test.html
@@ -68,6 +84,10 @@ module.exports = function webpackConfig() {
         template: 'src/index.template.html'
       }),
       new CopyWebpackPlugin([{ from: 'src/assets/images', to: 'assets/images' }])
+      //   new Visualizer({
+      //     filename: './statistics.html'
+      //   }),
+      //   new BundleAnalyzerPlugin()
     ],
     resolve: {
       extensions: ['.js', '.jsx'],
