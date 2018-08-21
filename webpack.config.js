@@ -83,11 +83,11 @@ module.exports = function webpackConfig() {
         filename: 'index.html',
         template: 'src/index.template.html'
       }),
-      new CopyWebpackPlugin([{ from: 'src/assets/images', to: 'assets/images' }])
-      //   new Visualizer({
-      //     filename: './statistics.html'
-      //   }),
-      //   new BundleAnalyzerPlugin()
+      new CopyWebpackPlugin([{ from: 'src/assets/images', to: 'assets/images' }]),
+      new Visualizer({
+        filename: './statistics.html'
+      }),
+      new BundleAnalyzerPlugin()
     ],
     resolve: {
       extensions: ['.js', '.jsx'],
